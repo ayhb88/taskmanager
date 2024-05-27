@@ -41,7 +41,7 @@ class TaskManagerApplicationTest {
 
     @Description("WHEN the task creation is executed THEN it should return a two hundred http response AND it should save it in database")
     @Test
-    void createATask200() {
+    void WhenTheTaskCreationIsExecuted_ThenItShouldReturnATwoHundredHttpResponse() {
 
         String url = "http://localhost:" + port + "/";
         String name = "task1";
@@ -59,9 +59,9 @@ class TaskManagerApplicationTest {
 
     }
 
-    @Description("given that the name is too long When a creation request is sent Then server should return a unsuccessful response")
+    @Description("Given that the name is too long When a creation request is sent Then server should return an unsuccessful response")
     @Test
-    void NameReturn400() {
+    void GivenThatTheNameIsTooLong_WhenACreationRequestIsSent_ThenServerShouldReturnAnUnsuccessfulResponse() {
         String url = "http://localhost:" + port + "/";
         String name = "task_0000000000000000000000000000000000000000000001";
         String desc = "desc1";
@@ -73,9 +73,9 @@ class TaskManagerApplicationTest {
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 
-    @Description("given that the description is too long When a creation request is sent Then server should return a unsuccessful response")
+    @Description("Given that the description is too long When a creation request is sent Then server should return an unsuccessful response")
     @Test
-    void DescrReturn400() {
+    void GivenThatTheDescriptionIsTooLong_WhenACreationRequestIsSent_ThenServerShouldReturnAnUnsuccessfulResponse() {
         String url = "http://localhost:" + port + "/";
         String name = "description_00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001";
         String desc = "desc1";
@@ -87,9 +87,9 @@ class TaskManagerApplicationTest {
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 
-    @Description("given that the date has passed When a creation request is sent Then server should return an unsuccessful response")
+    @Description("Given that the date has passed When a creation request is sent Then server should return an unsuccessful response")
     @Test
-    void DateReturn400() {
+    void GivenThatTheDateHasPassed_WhenACreationRequestIsSent_ThenServerShouldReturnAnUnsuccessfulResponse() {
         String url = "http://localhost:" + port + "/";
         String name = "task1";
         String desc = "desc1";
@@ -101,11 +101,10 @@ class TaskManagerApplicationTest {
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 
-
     /*GET ALL*/
-    @Description("given a task is created WHEN the task list is executed THEN the server should return all the task that are in database")
+    @Description("Given a task is created WHEN the task list is executed THEN the server should return all the task that are in database")
     @Test
-    void listTask200() {
+    void GivenATaskIsCreated_WhenTheTaskListIsExecuted_ThenTheServerShouldReturnAllTheTaskThatAreInDatabase() {
 
         //Task Creation
         String urlPost = "http://localhost:" + port + "/";
@@ -128,9 +127,9 @@ class TaskManagerApplicationTest {
         assertEquals(1, responseList.size());
     }
 
-    @Description("given a task is created WHEN the task requested by id THEN the server should return an specific task")
+    @Description("Given a task is created WHEN the task requested by id THEN the server should return an specific task")
     @Test
-    void rTask200() {
+    void GivenATaskIsCreated_WhenTheTaskRequestedById_ThenTheServerShouldReturnASpecificTask() {
         //Task Creation
         String urlPost = "http://localhost:" + port + "/";
         String name = "task2";
@@ -150,9 +149,9 @@ class TaskManagerApplicationTest {
 
     }
 
-    @Description("WHEN a task is requested by id AND it does not exist THEN the server should return an unsuccessful response ")
+    @Description("When a task is requested by id AND it does not exist THEN the server should return an unsuccessful response ")
     @Test
-    void rTask404() {
+    void WhenATaskIsRequestedById_AndItDoesNotExist_ThenTheServerShouldReturnAUnsuccessfulResponse() {
         //Get Task by Id
         String urlGet = "http://localhost:" + port + "/task/" + UUID.randomUUID();
         ResponseEntity<TaskEntityResponse> responseGet = testRestTemplate.getForEntity(urlGet, TaskEntityResponse.class);
