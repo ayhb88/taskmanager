@@ -8,22 +8,17 @@ Basado en:
 - Diseño dirigido por el dominio (DDD)
 - Desarrollo dirigido por pruebas de aceptación (ATDD)
 
-## Ejecucion de pruebas de aceptación y pruebas unitarias.
-```
-$ ./gradlew :test
-```
-## Construir Jar de la app
-```
-$ ./gradlew build
-```
-## Crear imagen Docker
-```
-$ ./build.sh
-```
-## Desplegar imagen docker
-```
-$ docker-compose -f docker-compose.yml up
-```
+## *Ejecucion de pruebas de aceptación y pruebas unitarias*
+	$ ./gradlew :test
+
+## *Construir Jar de la app*
+	$ ./gradlew build
+
+## *Crear imagen Docker*
+	$ ./build.sh
+
+## *Desplegar imagen docker*
+	$ docker-compose -f docker-compose.yml up
 
 # Peticiones
 
